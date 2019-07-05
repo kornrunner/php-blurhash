@@ -1,0 +1,25 @@
+language: php
+
+php:
+  - 7.2
+  - 7.3
+  - 7.4snapshot
+  - nightly
+
+matrix:
+  allow_failures:
+    - php: nightly
+
+before_script:
+  - phpenv config-add travis.php.ini
+
+install:
+  - phpenv config-rm xdebug.ini || true
+  - COMPOSER_MEMORY_LIMIT=-1 travis_retry composer install --prefer-dist -n
+
+script:
+  - mkdir -p build/logs
+  - phpdbg -qrr vendor/bin/phpunit
+
+after_script:
+  - travis_retry vendor/bin/php-coveralls -v
