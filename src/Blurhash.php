@@ -57,7 +57,7 @@ class Blurhash {
             }
         }
 
-        $dc_value = DC::encode(array_shift($components));
+        $dc_value = DC::encode(array_shift($components) ?: []);
 
         $max_ac_component = 0;
         foreach ($components as $component) {
@@ -65,7 +65,7 @@ class Blurhash {
             $max_ac_component = max ($component);
         }
 
-        $quant_max_ac_component = max(0, min(82, floor($max_ac_component * 166 - 0.5)));
+        $quant_max_ac_component = (int) max(0, min(82, floor($max_ac_component * 166 - 0.5)));
         $ac_component_norm_factor = ($quant_max_ac_component + 1) / 166;
 
         $ac_values = [];
@@ -77,7 +77,7 @@ class Blurhash {
         $blurhash .= Base83::encode($quant_max_ac_component, 1);
         $blurhash .= Base83::encode($dc_value, 4);
         foreach ($ac_values as $ac_value) {
-            $blurhash .= Base83::encode($ac_value, 2);
+            $blurhash .= Base83::encode((int) $ac_value, 2);
         }
 
         return $blurhash;
