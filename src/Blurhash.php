@@ -98,7 +98,7 @@ class Blurhash {
             throw new InvalidArgumentException("Blurhash length mismatch: length is {$length} but it should be {$expected_length}");
         }
 
-        $colors[] = DC::decode(Base83::decode(substr($blurhash, 2, 4)));
+        $colors = [DC::decode(Base83::decode(substr($blurhash, 2, 4)))];
 
         $quant_max_ac_component = Base83::decode($blurhash[1]);
         $max_value = ($quant_max_ac_component + 1) / 166;
