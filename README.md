@@ -23,7 +23,7 @@ require_once 'vendor/autoload.php';
 use kornrunner\Blurhash\Blurhash;
 
 $file  = 'test/data/img1.jpg';
-$image = imagecreatefromjpeg ($file);
+$image = imagecreatefromjpeg($file);
 list($width, $height) = getimagesize($file);
 
 $pixels = [];
@@ -47,7 +47,7 @@ $blurhash = Blurhash::encode($pixels, $components_x, $components_y);
 // LEHV9uae2yk8pyo0adR*.7kCMdnj
 ```
 
-For decoding the blurhash people will likely go for some other implementation (JavaScript/TypeScript).
+For decoding of blurhash people will likely go for some other implementation (JavaScript/TypeScript).
 PHP decoder returns a pixel array that can be used to generate the image:
 
 ```php
@@ -65,8 +65,8 @@ $pixels = Blurhash::decode($blurhash, $width, $height);
 $image  = imagecreatetruecolor($width, $height);
 for ($y = 0; $y < $height; ++$y) {
     for ($x = 0; $x < $width; ++$x) {
-        $pixel = $pixels[$y][$x];
-        imagesetpixel($image, $x, $y, imagecolorallocate($image, $pixel[0], $pixel[1], $pixel[2]));
+        [$r, $g, $b] = $pixels[$y][$x];
+        imagesetpixel($image, $x, $y, imagecolorallocate($image, $r, $g, $b));
     }
 }
 imagepng($image, 'blurhash.png');
