@@ -20,6 +20,8 @@ install:
 script:
   - mkdir -p build/logs
   - phpdbg -qrr vendor/bin/phpunit
+  - vendor/bin/phpstan analyze
+  - vendor/bin/psalm
 
 after_success:
   - composer require php-coveralls/php-coveralls
