@@ -1,30 +1,44 @@
 build: false
 shallow_clone: true
+clone_folder: c:\php-blurhash
+platform: x64
 
 cache:
-  - .\php -> appveyor.yml
+  - c:\php -> appveyor.yml
   - vendor -> composer.lock
 
+environment:
+  matrix:
+    - PHP_VERSION: '7.2.19'
+    - PHP_VERSION: '7.3.7'
+
+matrix:
+  fast_finish: true
+
 init:
-  - set PATH=%PATH%;.\php
+  - SET PATH=c:\php\%PHP_VERSION%;%PATH%
   - set COMPOSER_NO_INTERACTION=1
-  - set CACHED=0
 
 install:
-  - if exist .\php (set CACHED=1) else (mkdir .\php)
-  - if %CACHED%==0 cd .\php
-  - if %CACHED%==0 curl --fail --location --silent --show-error -o php.zip https://windows.php.net/downloads/releases/archives/php-7.2.19-nts-Win32-VC15-x64.zip
-  - if %CACHED%==0 appveyor DownloadFile https://getcomposer.org/composer.phar
-  - if %CACHED%==0 7z x php.zip -y
-  - if %CACHED%==0 copy php.ini-production php.ini /Y
-  - if %CACHED%==0 echo date.timezone="Europe/Belgrade" >> php.ini
-  - if %CACHED%==0 echo extension_dir=ext >> php.ini
-  - if %CACHED%==0 echo extension=php_openssl.dll >> php.ini
-  - if %CACHED%==0 echo extension=php_mbstring.dll >> php.ini
-  - if %CACHED%==0 echo extension=php_gd2.dll >> php.ini
-  - if %CACHED%==0 cd ..
+  - IF NOT EXIST c:\php mkdir c:\php
+  - IF NOT EXIST c:\php\%PHP_VERSION% mkdir c:\php\%PHP_VERSION%
+  - cd c:\php\%PHP_VERSION%
+  - IF NOT EXIST php-installed.txt curl --fail --location --silent --show-error -o php.zip https://windows.php.net/downloads/releases/archives/php-%PHP_VERSION%-nts-Win32-VC15-x64.zip
+  - IF NOT EXIST php-installed.txt 7z x php.zip -y
+  - IF NOT EXIST php-installed.txt del /Q *.zip
+  - IF NOT EXIST php-installed.txt copy /Y php.ini-development php.ini
+  - IF NOT EXIST php-installed.txt echo max_execution_time=1200 >> php.ini
+  - IF NOT EXIST php-installed.txt echo date.timezone="UTC" >> php.ini
+  - IF NOT EXIST php-installed.txt echo extension_dir=ext >> php.ini
+  - IF NOT EXIST php-installed.txt echo extension=php_openssl.dll >> php.ini
+  - IF NOT EXIST php-installed.txt echo extension=php_mbstring.dll >> php.ini
+  - IF NOT EXIST php-installed.txt echo extension=php_gd2.dll >> php.ini
+  - IF NOT EXIST php-installed.txt appveyor DownloadFile https://getcomposer.org/composer.phar
+  - IF NOT EXIST php-installed.txt echo @php %%~dp0composer.phar %%* > composer.bat
+  - IF NOT EXIST php-installed.txt type nul >> php-installed.txt
+  - cd c:\php-blurhash
 
 test_script:
-  - php .\php\composer.phar install
+  - composer install
   - vendor/bin/phpunit.bat --coverage-text
 
