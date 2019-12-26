@@ -24,8 +24,8 @@
         "php": "^7.2"
     },
     "require-dev": {
-        "ocramius/package-versions": "<1.5",
-        "phpstan/phpstan": "^0.11.10",
+        "ocramius/package-versions": "^1.5",
+        "phpstan/phpstan": "^0.12",
         "phpunit/phpunit": "^8.2",
         "vimeo/psalm": "^3.4"
     },
