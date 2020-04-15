@@ -72,19 +72,18 @@ class BlurhashTest extends TestCase {
     }
 
     private function getImagePixels($file) {
-        $image = imagecreatefromjpeg($file);
-        list ($width, $height) = getimagesize($file);
+        $image = imagecreatefromstring(file_get_contents($file));
+        $width = imagesx($image);
+        $height = imagesy($image);
+
         $pixels = [];
         for ($y = 0; $y < $height; ++$y) {
             $row = [];
             for ($x = 0; $x < $width; ++$x) {
-                $rgb = imagecolorat($image, $x, $y);
+                $index = imagecolorat($image, $x, $y);
+                $colors = imagecolorsforindex($image, $index);
 
-                $r = ($rgb >> 16) & 0xFF;
-                $g = ($rgb >> 8) & 0xFF;
-                $b = $rgb & 0xFF;
-
-                $row[] = [$r, $g, $b];
+                $row[] = [$colors['red'], $colors['green'], $colors['blue']];
             }
 
             $pixels[] = $row;
