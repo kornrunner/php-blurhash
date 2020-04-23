@@ -45,7 +45,7 @@ $blurhash = Blurhash::encode($pixels, $components_x, $components_y);
 // LEHV9uae2yk8pyo0adR*.7kCMdnj
 ```
 
-For decoding of blurhash people will likely go for some other implementation (JavaScript/TypeScript).
+For decoding of blurhash people will likely go for some other implementation ([JavaScript/TypeScript](https://github.com/woltapp/blurhash/tree/master/TypeScript)).
 PHP decoder returns a pixel array that can be used to generate the image:
 
 ```php
