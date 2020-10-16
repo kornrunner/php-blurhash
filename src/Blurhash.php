@@ -61,7 +61,7 @@ class Blurhash {
 
         $max_ac_component = 0;
         foreach ($components as $component) {
-            array_push ($component, $max_ac_component);
+            $component[] = $max_ac_component;
             $max_ac_component = max ($component);
         }
 
