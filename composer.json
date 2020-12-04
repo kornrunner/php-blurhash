@@ -21,13 +21,13 @@
         }
     },
     "require": {
-        "php": "^7.2"
+        "php": "^7.3|^8.0"
     },
     "require-dev": {
-        "ocramius/package-versions": "<1.5",
+        "ocramius/package-versions": "^1.4|^2.0",
         "phpstan/phpstan": "^0.12",
         "phpunit/phpunit": "^8.2",
-        "vimeo/psalm": "^3.4"
+        "vimeo/psalm": "^4.3"
     },
     "archive": {
         "exclude": ["/vendor", "/test", "/build"]
