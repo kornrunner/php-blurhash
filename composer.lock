@@ -1147,16 +1147,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.12.65",
+            "version": "0.12.67",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "1c7658668b28f8d647a8b874372acf14c4352688"
+                "reference": "ced7a5d9c5dba908c1c00cea3f1d4ad74da71b86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/1c7658668b28f8d647a8b874372acf14c4352688",
-                "reference": "1c7658668b28f8d647a8b874372acf14c4352688",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/ced7a5d9c5dba908c1c00cea3f1d4ad74da71b86",
+                "reference": "ced7a5d9c5dba908c1c00cea3f1d4ad74da71b86",
                 "shasum": ""
             },
             "require": {
@@ -1187,7 +1187,7 @@
             "description": "PHPStan - PHP Static Analysis Tool",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/0.12.65"
+                "source": "https://github.com/phpstan/phpstan/tree/0.12.67"
             },
             "funding": [
                 {
@@ -1203,7 +1203,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-01-06T16:51:10+00:00"
+            "time": "2021-01-14T14:16:19+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -1525,16 +1525,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.5.0",
+            "version": "9.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "8e16c225d57c3d6808014df6b1dd7598d0a5bbbe"
+                "reference": "e7bdf4085de85a825f4424eae52c99a1cec2f360"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/8e16c225d57c3d6808014df6b1dd7598d0a5bbbe",
-                "reference": "8e16c225d57c3d6808014df6b1dd7598d0a5bbbe",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/e7bdf4085de85a825f4424eae52c99a1cec2f360",
+                "reference": "e7bdf4085de85a825f4424eae52c99a1cec2f360",
                 "shasum": ""
             },
             "require": {
@@ -1612,7 +1612,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.0"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.1"
             },
             "funding": [
                 {
@@ -1624,7 +1624,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-12-04T05:05:53+00:00"
+            "time": "2021-01-17T07:42:25+00:00"
         },
         {
             "name": "psr/container",
@@ -3490,16 +3490,16 @@
         },
         {
             "name": "vimeo/psalm",
-            "version": "4.3.2",
+            "version": "4.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vimeo/psalm.git",
-                "reference": "57b53ff26237074fdf5cbcb034f7da5172be4524"
+                "reference": "9fd7a7d885b3a216cff8dec9d8c21a132f275224"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vimeo/psalm/zipball/57b53ff26237074fdf5cbcb034f7da5172be4524",
-                "reference": "57b53ff26237074fdf5cbcb034f7da5172be4524",
+                "url": "https://api.github.com/repos/vimeo/psalm/zipball/9fd7a7d885b3a216cff8dec9d8c21a132f275224",
+                "reference": "9fd7a7d885b3a216cff8dec9d8c21a132f275224",
                 "shasum": ""
             },
             "require": {
@@ -3588,9 +3588,9 @@
             ],
             "support": {
                 "issues": "https://github.com/vimeo/psalm/issues",
-                "source": "https://github.com/vimeo/psalm/tree/4.3.2"
+                "source": "https://github.com/vimeo/psalm/tree/4.4.1"
             },
-            "time": "2020-12-29T17:37:09+00:00"
+            "time": "2021-01-14T21:44:29+00:00"
         },
         {
             "name": "webmozart/assert",
