@@ -8,7 +8,7 @@ class DCTest extends TestCase {
 
     public function testEncode () {
         $this->assertSame (65793, DC::encode ([0, 0, 0], 1));
-        $this->assertSame (16843008, DC::encode ([255, 255, 255], 1));
+        $this->assertSame (16777215, DC::encode ([255, 255, 255], 1));
         $this->assertSame (65793, DC::encode ([-1, -1, -1], 1));
     }
 
