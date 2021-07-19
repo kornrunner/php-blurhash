@@ -1,0 +1,22 @@
+name: Static Analysis (informative)
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  phpstan:
+    name: PHPStan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.0
+          coverage: none
+
+      - run: composer install --no-progress --prefer-dist
+      - run: composer require phpstan/phpstan --no-progress --dev
+      - run: vendor/bin/phpstan analyse src/
+        continue-on-error: true # is only informative
