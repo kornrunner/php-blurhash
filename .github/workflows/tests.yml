@@ -49,11 +49,11 @@ jobs:
           fetch-depth: 1
 
       - run: php -v
-      - run: php --ini
+      - run: echo extension=gd>>C:\tools\php\php.ini
       - run: php -m
       - run: composer -V
       - run: composer install --no-progress
-      - run: php -dextension=gd vendor/bin/phpunit
+      - run: php vendor/bin/phpunit
 
   code_coverage:
     name: Code Coverage
