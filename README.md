@@ -1,4 +1,5 @@
-# php-blurhash [![Build status](https://ci.appveyor.com/api/projects/status/y6u407sdctv10xle/branch/master?svg=true)](https://ci.appveyor.com/project/kornrunner/php-blurhash/branch/master) [![Coverage Status](https://coveralls.io/repos/github/kornrunner/php-blurhash/badge.svg?branch=master)](https://coveralls.io/github/kornrunner/php-blurhash?branch=master) [![Latest Stable Version](https://poser.pugx.org/kornrunner/blurhash/v/stable)](https://packagist.org/packages/kornrunner/blurhash)
+# php-blurhash [![Tests](https://github.com/kornrunner/php-blurhash/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/kornrunner/php-blurhash/actions/workflows/tests.yml) [![Coverage Status](https://coveralls.io/repos/github/kornrunner/php-blurhash/badge.svg?branch=master)](https://coveralls.io/github/kornrunner/php-blurhash?branch=master) [![Latest Stable Version](https://poser.pugx.org/kornrunner/blurhash/v/stable)](https://packagist.org/packages/kornrunner/blurhash)
+
 
 A pure PHP implementation of [Blurhash](https://github.com/woltapp/blurhash). The API is stable, however the hashing function in either direction may not be.
 
