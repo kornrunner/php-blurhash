@@ -49,6 +49,7 @@ jobs:
           fetch-depth: 1
 
       - run: php -v
+      - run: php --ini
       - run: php -m
       - run: composer -V
       - run: composer install --no-progress
