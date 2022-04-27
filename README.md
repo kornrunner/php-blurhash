@@ -78,3 +78,7 @@ Issues, feature requests or improvements welcome!
 ## Licence
 
 This project is licensed under the [MIT License](LICENSE).
+
+## Stargazing
+
+[![Star History Chart](https://api.star-history.com/svg?repos=kornrunner/php-blurhash&type=Date)](https://star-history.com/#kornrunner/php-blurhash&Date)
