@@ -12,8 +12,8 @@ final class AC {
     }
 
     public static function decode(int $value, float $max_value): array {
-        $quant_r = floor($value / (19 * 19));
-        $quant_g = floor($value / 19) % 19;
+        $quant_r = intdiv($value, 19 * 19);
+        $quant_g = intdiv($value, 19) % 19;
         $quant_b = $value % 19;
 
         return [

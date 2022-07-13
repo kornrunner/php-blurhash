@@ -89,7 +89,7 @@ class Blurhash {
         }
 
         $size_info = Base83::decode($blurhash[0]);
-        $size_y = floor($size_info / 9) + 1;
+        $size_y = intdiv($size_info, 9) + 1;
         $size_x = ($size_info % 9) + 1;
 
         $length = strlen($blurhash);
