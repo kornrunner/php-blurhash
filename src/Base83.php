@@ -17,13 +17,13 @@ class Base83 {
     private const BASE = 83;
 
     public static function encode(int $value, int $length): string {
-        if (floor($value / (self::BASE ** $length)) != 0) {
+        if (intdiv($value, self::BASE ** $length) != 0) {
             throw new InvalidArgumentException('Specified length is too short to encode given value.');
         }
 
         $result = '';
         for ($i = 1; $i <= $length; $i++) {
-            $digit   = floor($value / (self::BASE ** ($length - $i))) % self::BASE;
+            $digit   = intdiv($value, self::BASE ** ($length - $i)) % self::BASE;
             $result .= self::ALPHABET[$digit];
         }
         return $result;
