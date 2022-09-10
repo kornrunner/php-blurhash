@@ -14,6 +14,7 @@ $ composer require kornrunner/blurhash
 
 ## Usage
 
+### Encoding with GB
 Encoding an image to blurhash expects two-dimensional array of colors of image pixels, sample code:
 
 ```php
@@ -45,6 +46,38 @@ $components_y = 3;
 $blurhash = Blurhash::encode($pixels, $components_x, $components_y);
 // LEHV9uae2yk8pyo0adR*.7kCMdnj
 ```
+
+### Encoding with Intervention
+
+```php
+require_once 'vendor/autoload.php';
+
+use kornrunner\Blurhash\Blurhash;
+use Intervention\Image\ImageManagerStatic as Image;
+
+$file  = 'test/data/img1.jpg';
+$image = Image::make($source);
+$width = $image->width();
+$height = $image->height();
+
+$pixels = [];
+for ($y = 0; $y < $height; ++$y) {
+    $row = [];
+    for ($x = 0; $x < $width; ++$x) {
+        $colors = $image->pickColor($x, $y);
+        
+        $row[] = [$colors[0], $colors[1], $colors[2]];
+    }
+    $pixels[] = $row;
+}
+
+$components_x = 4;
+$components_y = 3;
+$blurhash = Blurhash::encode($pixels, $components_x, $components_y);
+// LEHV9uae2yk8pyo0adR*.7kCMdnj
+```
+
+### Decoding with JS / TS
 
 For decoding of blurhash people will likely go for some other implementation ([JavaScript/TypeScript](https://github.com/woltapp/blurhash/tree/master/TypeScript)).
 PHP decoder returns a pixel array that can be used to generate the image:
