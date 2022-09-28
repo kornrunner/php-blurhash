@@ -3,7 +3,7 @@ name: Static Analysis (informative)
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   phpstan:
