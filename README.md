@@ -14,7 +14,7 @@ $ composer require kornrunner/blurhash
 
 ## Usage
 
-### Encoding with GB
+### Encoding with GD
 Encoding an image to blurhash expects two-dimensional array of colors of image pixels, sample code:
 
 ```php
