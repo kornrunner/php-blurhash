@@ -53,10 +53,17 @@ $blurhash = Blurhash::encode($pixels, $components_x, $components_y);
 require_once 'vendor/autoload.php';
 
 use kornrunner\Blurhash\Blurhash;
-use Intervention\Image\ImageManagerStatic as Image;
+use Intervention\Image\Colors\Rgb\Channels\Blue;
+use Intervention\Image\Colors\Rgb\Channels\Green;
+use Intervention\Image\Colors\Rgb\Channels\Red;
+use Intervention\Image\Colors\Rgb\Color as RgbColor;
+use Intervention\Image\Colors\Rgb\Colorspace as RgbColorspace;
+use Intervention\Image\Drivers\Gd\Driver;
+use Intervention\Image\ImageManager;
 
 $file  = 'test/data/img1.jpg';
-$image = Image::make($source);
+$manager = new ImageManager(new Driver());
+$image = $manager->read($file);
 $width = $image->width();
 $height = $image->height();
 
@@ -66,7 +73,15 @@ for ($y = 0; $y < $height; ++$y) {
     for ($x = 0; $x < $width; ++$x) {
         $colors = $image->pickColor($x, $y);
         
-        $row[] = [$colors[0], $colors[1], $colors[2]];
+        if (!($colors instanceof RgbColor)) {
+            $colors = $colors->convertTo(new RgbColorspace());
+        }
+
+        $row[] = [
+            $colors->channel(Red::class)->value(),
+            $colors->channel(Green::class)->value(),
+            $colors->channel(Blue::class)->value(),
+        ];
     }
     $pixels[] = $row;
 }
