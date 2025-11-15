@@ -6,50 +6,51 @@ jobs:
 
   linux:
     name: Test on Linux
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        php-version: ['8.1', '8.2', '8.3']
+        php-version: ['8.1', '8.2', '8.3', '8.4']
 
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 1
 
-      - run: php${{ matrix.php-version }} -v
-      - run: php${{ matrix.php-version }} -m
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          extensions: gd
+          coverage: none
+
+      - run: php -v
+      - run: php -m
       - run: composer -V
       - run: composer install --no-progress
-      - run: php${{ matrix.php-version }} vendor/bin/phpunit
+      - run: php vendor/bin/phpunit
 
   windows:
     name: Test on Windows
-    defaults:
-      run:
-        shell: cmd
     runs-on: windows-latest
     strategy:
       fail-fast: false
       matrix:
-        php-version: ['8.1', '8.2', '8.3']
-        arch: [x64]
-        ts: [nts]
+        php-version: ['8.1', '8.2', '8.3', '8.4']
 
     steps:
-      - name: Setup PHP
-        id: setup-php
-        uses: php/setup-php-sdk@v0.10
-        with:
-          version: ${{matrix.php-version}}
-          arch: ${{matrix.arch}}
-          ts: ${{matrix.ts}}
       - uses: actions/checkout@v2
         with:
           fetch-depth: 1
 
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          extensions: gd
+          coverage: none
+
       - run: php -v
-      - run: echo extension=gd>>C:\tools\php\php.ini
       - run: php -m
       - run: composer -V
       - run: composer install --no-progress
@@ -60,9 +61,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: shivammathur/setup-php@v2
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.3
+          php-version: 8.4
+          extensions: gd
           coverage: none
 
       - run: composer install --no-progress
